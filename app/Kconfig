@@ -439,6 +439,24 @@ endmenu
 
 menu "Combo options"
 
+config ZMK_COMBOS_RUNTIME
+    bool "Runtime-editable combos"
+    depends on !ZMK_SPLIT || ZMK_SPLIT_ROLE_CENTRAL
+    help
+      Reserve combo slots and allow replacing their definitions at runtime.
+
+config ZMK_COMBOS_RUNTIME_SLOTS
+    int "Minimum number of runtime combo slots"
+    depends on ZMK_COMBOS_RUNTIME
+    range 1 255
+    default 32
+
+config ZMK_COMBOS_RUNTIME_MAX_KEYS
+    int "Maximum keys per runtime combo"
+    depends on ZMK_COMBOS_RUNTIME
+    range 2 255
+    default 6
+
 config ZMK_COMBO_MAX_PRESSED_COMBOS
     int "Maximum number of currently pressed combos"
     default 4
